@@ -1,7 +1,15 @@
+include_recipe "libgeoip"
+include_recipe "libgssapi-krb5"
+include_recipe "libisc"
+include_recipe "libssl"
+
 packages = Array.new
 
 case node[:lsb][:codename]
 when "lucid"
+  include_recipe "libcap"
+  include_recipe "libxml2"
+
   packages |= %w/
     libdns64
   /
